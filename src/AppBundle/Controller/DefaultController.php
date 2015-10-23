@@ -25,8 +25,10 @@ class DefaultController extends Controller
      */
     public function nameAction(Request $request, $name)
     {
-//        return new Response(json_encode($name));
+//        return new Response($name);
         // replace this example code with whatever you need
-        return new Response($this->render('AppBundle::index.html.twig'));
+        return $this->render('AppBundle:default:index.html.twig', [
+            'name' => $name,
+        ]);
     }
 }
