@@ -9,16 +9,21 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $advert = new Advert();
-        $advert->setName('Traktor');
-        $advert->setDescription('Buy Traktor');
-        $advert->setPrice(80000);
+//        $advert = new Advert();
+//        $advert->setName('Traktor');
+//        $advert->setDescription('Buy Traktor');
+//        $advert->setPrice(80000);
+//
+//        $m = $this->container->get('doctrine.odm.mongodb.document_manager');
+//        $m->persist($advert);
+//        $m->flush();
 
-        $m = $this->container->get('doctrine.odm.mongodb.document_manager');
-        $m->persist($advert);
-        $m->flush();
+//        $repository = ;
 
-        var_dump($advert);
+        $aa = $this->get('advert.advert');
+
+
+        var_dump($aa->getByPrice(80000));
         return new Response(33);
     }
 }
