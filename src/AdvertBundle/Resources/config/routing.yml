@@ -1,0 +1,3 @@
+advert_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AdvertBundle:Default:index }
