@@ -4,8 +4,12 @@ advert_homepage:
 
 advert_add_page:
     path:   /advert/add
-    defaults: { _controller: AdvertBundle:Default:add }
+    defaults: { _controller: AdvertBundle:Advert:add }
 
-advert_detail:
+advert_detail_page:
     path:     /advert/{id}
     defaults: { _controller: AdvertBundle:Default:detail }
+
+advert_edit_page:
+    path:     /advert/{id}/edit
+    defaults: { _controller: AdvertBundle:Advert:edit }

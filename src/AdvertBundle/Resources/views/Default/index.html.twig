@@ -11,7 +11,7 @@
     </thead>
     {% for advert in adverts %}
         <tr>
-            <td><a href="{{ path('advert_detail', {'id': advert.id }) }}">{{ advert.name }}</a></td>
+            <td><a href="{{ path('advert_detail_page', {'id': advert.id }) }}">{{ advert.name }}</a></td>
             <td>{{ advert.price }}</td>
         </tr>
     {% endfor %}

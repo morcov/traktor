@@ -1,10 +1,8 @@
 <?php
 namespace AdvertBundle\Controller;
 
-use AdvertBundle\Form\AdvertType;
 use CommonBundle\Controller\BaseController;
 use Doctrine\ODM\MongoDB\LockException;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -35,30 +33,5 @@ class DefaultController extends BaseController
         return $this->render('@Advert/Default/detail.html.twig', [
             'advert' => $advert,
         ]);
-    }
-
-    /**
-     * @param Request $request
-     * @return RedirectResponse|Response
-     */
-    public function addAction(Request $request)
-    {
-        $form = $this->getFF()->create(new AdvertType());
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $advert = $form->getData();
-            $this->getDm()->persist($advert);
-            $this->getDm()->flush();
-
-            return $this->redirect($this->get('router')->generate('advert_detail', ['id' => $advert->getId()]));
-        }
-
-        return
-            $this->render('@Advert/Default/add.html.twig',
-                [
-                    'form' => $form->createView(),
-                ]);
-
     }
 }

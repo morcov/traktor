@@ -1,0 +1,12 @@
+{% extends '@Common/base.html.twig' %}
+
+{% block body %}
+
+    <form novalidate name="app_bundle_advert" method="post" action="{{ path('advert_edit_page', {'id':advert.id}) }}">
+        {{ form_label(form) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+        <div><button type="submit" id="app_bundle_advert_save">Save</button></div>
+    </form>
+
+{% endblock %}
