@@ -5,3 +5,7 @@ advert_homepage:
 advert_add_page:
     path:   /advert/add
     defaults: { _controller: AdvertBundle:Default:add }
+
+advert_detail:
+    path:     /advert/{id}
+    defaults: { _controller: AdvertBundle:Default:detail }
