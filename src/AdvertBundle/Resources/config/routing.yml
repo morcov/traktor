@@ -1,3 +1,7 @@
 advert_homepage:
     path:     /advert
     defaults: { _controller: AdvertBundle:Default:index }
+
+advert_add_page:
+    path:   /advert/add
+    defaults: { _controller: AdvertBundle:Default:add }

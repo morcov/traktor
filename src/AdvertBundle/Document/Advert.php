@@ -2,6 +2,7 @@
 
 namespace AdvertBundle\Document;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
@@ -20,19 +21,23 @@ class Advert
 
     /**
      * @var string
+     * @Assert\NotNull
      * @MongoDB\String
      */
     protected $name;
 
     /**
      * @var string
+     * @Assert\NotNull
      * @MongoDB\String
      */
     protected $description;
 
     /**
-     * @var float
-     * @MongoDB\Float
+     * @var int
+     * @Assert\NotNull
+     * @Assert\Range(min="10")
+     * @MongoDB\Integer
      */
     protected $price;
 
@@ -77,7 +82,7 @@ class Advert
     }
 
     /**
-     * @return float
+     * @return int
      */
     public function getPrice()
     {

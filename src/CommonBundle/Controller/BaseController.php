@@ -12,4 +12,9 @@ class BaseController extends  Controller
         return $this->get('doctrine.odm.mongodb.document_manager');
     }
 
+    public function getFF()
+    {
+        return $this->get('form.factory');
+    }
+
 }
