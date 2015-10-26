@@ -1,9 +1,7 @@
 <?php
 namespace AdvertBundle\Controller;
 
-use AdvertBundle\Document\Advert;
 use CommonBundle\Controller\BaseController;
-use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends BaseController
 {
@@ -22,6 +20,8 @@ class DefaultController extends BaseController
 
         $adverts = $this->get('advert.advert')->findAll();
 
-        return new Response(33);
+        return $this->render('@Advert/Default/index.html.twig', [
+            'adverts' => $adverts,
+        ]);
     }
 }
