@@ -2,10 +2,10 @@
 namespace AdvertBundle\Controller;
 
 use AdvertBundle\Document\Advert;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use CommonBundle\Controller\BaseController;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class DefaultController extends BaseController
 {
     public function indexAction()
     {
@@ -14,14 +14,14 @@ class DefaultController extends Controller
 //        $advert->setDescription('Buy Traktor');
 //        $advert->setPrice(80000);
 //
-//        $m = $this->container->get('doctrine.odm.mongodb.document_manager');
+//        $m = $this->getDM();
 //        $m->persist($advert);
 //        $m->flush();
 
 //        $repository = ;
 
-        $aa = $this->get('advert.advert');
-
+//        $aa = $this->get('advert.advert');
+        $aa = $this->getDm()->getRepository('AdvertBundle\Document\Advert');
 
         var_dump($aa->getByPrice(80000));
         return new Response(33);

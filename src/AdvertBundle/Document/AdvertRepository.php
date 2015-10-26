@@ -8,8 +8,9 @@ class AdvertRepository extends DocumentRepository
 
     public function getByPrice($price)
     {
+        return 44;
         $query = $this->createQueryBuilder()
-            ->field('price')->equals($price)
+            ->field('name')->equals('Traktor')
             ->getQuery();
 
         return $query->getSingleResult();

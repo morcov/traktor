@@ -1,29 +1,37 @@
 <?php
+
 namespace AdvertBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @MongoDB\Document(repositoryClass="AdvertBundle\Document\AdvertRepository")
+ * @MongoDB\Document(
+ * collection="advert",
+ * repositoryClass="AdvertBundle\Document\AdvertRepository"
+ * )
  */
 class Advert
 {
     /**
+     * @var string
      * @MongoDB\Id
      */
     protected $id;
 
     /**
+     * @var string
      * @MongoDB\String
      */
     protected $name;
 
     /**
+     * @var string
      * @MongoDB\String
      */
     protected $description;
 
     /**
+     * @var float
      * @MongoDB\Float
      */
     protected $price;
