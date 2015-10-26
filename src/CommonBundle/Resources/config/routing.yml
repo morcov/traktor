@@ -1,0 +1,3 @@
+404_page:
+    path:   /404
+    defaults: { _controller: CommonBundle:Error:error404 }

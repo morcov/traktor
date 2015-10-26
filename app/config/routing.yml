@@ -1,6 +1,6 @@
-#common:
-#    resource: "@CommonBundle/Resources/config/routing.yml"
-#    prefix:   /
+common:
+    resource: "@CommonBundle/Resources/config/routing.yml"
+    prefix:   /
 
 advert:
     resource: "@AdvertBundle/Resources/config/routing.yml"
