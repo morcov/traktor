@@ -1,6 +1,10 @@
 {% extends '@Common/base.html.twig' %}
 
 {% block body %}
+    <div>
+        <a href="{{ path('advert_homepage') }}">Back</a>
+        | <a href="{{ path('advert_edit_page', {'id': advert.id}) }}">Edit</a>
+    </div>
     <table>
         <tr>
             <th>Name:</th>
