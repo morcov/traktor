@@ -10,18 +10,14 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
      */
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+        return $this->render('@App/default/default.html.twig');
     }
 
     /**
-     * @Route("/{name}", name="name")
      */
     public function nameAction(Request $request, $name)
     {

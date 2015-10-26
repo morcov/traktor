@@ -20,10 +20,8 @@ class DefaultController extends BaseController
 
 //        $repository = ;
 
-//        $aa = $this->get('advert.advert');
-        $aa = $this->getDm()->getRepository('AdvertBundle\Document\Advert');
+        $adverts = $this->get('advert.advert')->findAll();
 
-        var_dump($aa->getByPrice(80000));
         return new Response(33);
     }
 }
