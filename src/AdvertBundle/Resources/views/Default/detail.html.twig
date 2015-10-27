@@ -7,12 +7,16 @@
     </div>
     <table>
         <tr>
-            <th>Name:</th>
-            <td>{{ advert.name }}</td>
+            <th>Traktor:</th>
+            <td>{{ advert.make }} {{ advert.model }}</td>
+        </tr>
+        <tr>
+            <th>Year:</th>
+            <td>{{ advert.year }}</td>
         </tr>
         <tr>
             <th>Price:</th>
-            <td>{{ advert.price }}</td>
+            <td>{{ advert.price }}$</td>
         </tr>
         <tr>
             <th>Description:</th>

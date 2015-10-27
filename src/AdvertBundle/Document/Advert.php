@@ -24,7 +24,28 @@ class Advert
      * @Assert\NotNull
      * @MongoDB\String
      */
-    protected $name;
+    protected $make;
+
+    /**
+     * @var string
+     * @Assert\NotNull
+     * @MongoDB\String
+     */
+    protected $model;
+
+    /**
+     * @Assert\NotNull
+     * @Assert\Range(min="1900")
+     * @MongoDB\Integer
+     * @var int
+     */
+    protected $year;
+
+    /**
+     * @MongoDB\Boolean
+     * @var boolean
+     */
+    protected $is_new;
 
     /**
      * @var string
@@ -52,17 +73,65 @@ class Advert
     /**
      * @return string
      */
-    public function getName()
+    public function getMake()
     {
-        return $this->name;
+        return $this->make;
     }
 
     /**
-     * @param $name
+     * @param string $make
      */
-    public function setName($name)
+    public function setMake($make)
     {
-        $this->name = $name;
+        $this->make = $make;
+    }
+
+    /**
+     * @return string
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * @param string $model
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
+    }
+
+    /**
+     * @return int
+     */
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    /**
+     * @param int $year
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsNew()
+    {
+        return $this->is_new;
+    }
+
+    /**
+     * @param boolean $is_new
+     */
+    public function setIsNew($is_new)
+    {
+        $this->is_new = $is_new;
     }
 
     /**
@@ -74,7 +143,7 @@ class Advert
     }
 
     /**
-     * @param $description
+     * @param string $description
      */
     public function setDescription($description)
     {
@@ -90,12 +159,14 @@ class Advert
     }
 
     /**
-     * @param $price
+     * @param int $price
      */
     public function setPrice($price)
     {
         $this->price = $price;
     }
+
+
 
 
 }

@@ -11,9 +11,12 @@ class AdvertType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description', 'textarea')
-            ->add('price', 'integer');
+            ->add('make')
+            ->add('model')
+            ->add('year', 'integer')
+            ->add('price', 'integer')
+            ->add('is_new', 'checkbox')
+            ->add('description', 'textarea');
     }
 
     public function configureOptions(OptionsResolver $resolver)
