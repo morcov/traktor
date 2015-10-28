@@ -1,0 +1,21 @@
+{% extends '@Common/base.html.twig' %}
+
+{% block body %}
+    <ul>
+        {% for make in makes %}
+            <li>{{ make.name }}</li>
+            <ul>
+                {% for model in make.models %}
+                    <li>{{ model.name }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        {% for model in models %}
+            <li>{{ model.make.name }} {{ model.name }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

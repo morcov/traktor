@@ -13,3 +13,7 @@ advert_detail_page:
 advert_edit_page:
     path:     /advert/{id}/edit
     defaults: { _controller: AdvertBundle:Advert:edit }
+
+test_page:
+    path:     /test
+    defaults: { _controller: AdvertBundle:Test:index }

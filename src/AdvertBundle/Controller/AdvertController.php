@@ -26,7 +26,7 @@ class AdvertController extends BaseController
             return $this->redirect($form);
         }
 
-        return $this->render('@Advert/Default/add.html.twig',
+        return $this->render('@Advert/Advert/add.html.twig',
                 [
                     'form' => $form->createView(),
                 ]);
@@ -46,7 +46,7 @@ class AdvertController extends BaseController
             return $this->redirect($form);
         }
 
-        return $this->render('@Advert/Default/edit.html.twig',
+        return $this->render('@Advert/Advert/edit.html.twig',
                 [
                     'form' => $form->createView(),
                     'advert' => $advert,
