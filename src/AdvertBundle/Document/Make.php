@@ -27,9 +27,12 @@ class Make
     protected $name;
 
     /**
-     * @MongoDB\ReferenceMany(targetDocument="AdvertBundle\Document\Model", mappedBy="make")
+     * @return string
      */
-    protected $models;
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
     /**
      * @return string
@@ -54,15 +57,6 @@ class Make
     {
         $this->name = $name;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getModels()
-    {
-        return $this->models;
-    }
-
 
 
 }

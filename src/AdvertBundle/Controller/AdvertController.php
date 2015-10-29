@@ -22,14 +22,13 @@ class AdvertController extends BaseController
     {
         $form = $this->make($request);
 
-        if(!($form instanceof Form)){
+        if (!($form instanceof Form)) {
             return $this->redirect($form);
         }
 
-        return $this->render('@Advert/Advert/add.html.twig',
-                [
-                    'form' => $form->createView(),
-                ]);
+        return $this->render('@Advert/Advert/add.html.twig', [
+            'form' => $form->createView(),
+        ]);
 
     }
 
@@ -42,15 +41,14 @@ class AdvertController extends BaseController
         $advert = $this->get('advert.advert')->find($id);
         $form = $this->make($request, $advert);
 
-        if(!($form instanceof Form)){
+        if (!($form instanceof Form)) {
             return $this->redirect($form);
         }
 
-        return $this->render('@Advert/Advert/edit.html.twig',
-                [
-                    'form' => $form->createView(),
-                    'advert' => $advert,
-                ]);
+        return $this->render('@Advert/Advert/edit.html.twig', [
+            'form' => $form->createView(),
+            'advert' => $advert,
+        ]);
     }
 
     /**

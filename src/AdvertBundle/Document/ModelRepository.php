@@ -6,5 +6,4 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
 class ModelRepository extends DocumentRepository
 {
 
-
 }
