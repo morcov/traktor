@@ -1,7 +1,7 @@
 <?php
 
-use AdvertBundle\Document\Make;
-use AdvertBundle\Document\Model;
+use CatalogBundle\Document\Make;
+use CatalogBundle\Document\Model;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 

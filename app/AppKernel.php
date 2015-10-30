@@ -20,6 +20,7 @@ class AppKernel extends Kernel
 
             new AppBundle\AppBundle(),
             new AdvertBundle\AdvertBundle(),
+            new CatalogBundle\CatalogBundle(),
             new CommonBundle\CommonBundle(),
         );
 

@@ -1,5 +1,5 @@
 <?php
-namespace AdvertBundle\Document;
+namespace CatalogBundle\Document;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
 

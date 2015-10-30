@@ -1,6 +1,6 @@
 <?php
 
-namespace AdvertBundle\Form;
+namespace CatalogBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,6 +20,6 @@ class MakeType extends AbstractType
 
     public function getName()
     {
-        return 'advert_bundle_make_type';
+        return 'catalog_bundle_make_type';
     }
 }

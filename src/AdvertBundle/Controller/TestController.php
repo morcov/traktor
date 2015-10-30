@@ -1,8 +1,8 @@
 <?php
 namespace AdvertBundle\Controller;
 
-use AdvertBundle\Document\Make;
-use AdvertBundle\Document\Model;
+use CatalogBundle\Document\Make;
+use CatalogBundle\Document\Model;
 use CommonBundle\Controller\BaseController;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -13,8 +13,8 @@ class TestController extends BaseController
      */
     public function indexAction()
     {
-        $makes = $this->get('advert.make_repository')->findAll();
-        $models = $this->get('advert.model_repository')->findAll();
+        $makes = $this->get('catalog.make_repository')->findAll();
+        $models = $this->get('catalog.model_repository')->findAll();
 
 
         return $this->render('AdvertBundle:Test:detail.html.twig', [

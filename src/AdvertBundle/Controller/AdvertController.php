@@ -58,7 +58,7 @@ class AdvertController extends BaseController
      */
     private function make($request, $advert = null)
     {
-        $makes = $this->get('advert.make_repository')->findAll();
+        $makes = $this->get('catalog.make_repository')->findAll();
         $makeID = array_shift($makes)->getId();
 
         $form = $this->getFF()->create(new AdvertType($makeID), $advert ?: new Advert());
@@ -79,7 +79,7 @@ class AdvertController extends BaseController
     {
         $makeID = $request->get('make');
 
-        $models = $this->get('advert.model_repository')->getModelsByMake($makeID);
+        $models = $this->get('catalog.model_repository')->getModelsByMake($makeID);
 
         $select = [];
 
