@@ -58,10 +58,8 @@ class AdvertController extends BaseController
      */
     private function make($request, $advert = null)
     {
-        $makes = $this->get('catalog.make_repository')->findAll();
-        $makeID = array_shift($makes)->getId();
 
-        $form = $this->getFF()->create(new AdvertType($makeID), $advert ?: new Advert());
+        $form = $this->getFF()->create(new AdvertType(), $advert ?: new Advert());
         $form->handleRequest($request);
 
         if ($form->isValid()) {

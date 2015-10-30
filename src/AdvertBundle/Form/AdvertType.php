@@ -6,20 +6,18 @@ use CatalogBundle\Document\ModelRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+
 
 class AdvertType extends AbstractType
 {
-    protected $makeID;
-
-    public function __construct($makeID)
+    public function __construct()
     {
-        $this->makeID = $makeID;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $makeID = $this->makeID;
-
         $builder
             ->add('year', 'integer')
             ->add('price', 'integer')
@@ -27,13 +25,31 @@ class AdvertType extends AbstractType
             ->add('make', 'document', [
                 'class' => 'CatalogBundle\Document\Make',
             ])
-            ->add('model', 'document', [
-                'class' => 'CatalogBundle\Document\Model',
-                'query_builder' => function (ModelRepository $repo) use ($makeID) {
-                    return $repo->createModelsByMakeQuery($makeID);
-                },
-            ])
             ->add('description', 'textarea');
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+                $adver = $event->getData();
+                $form = $event->getForm();
+
+                if ($adver && $adver->getMake()) {
+
+                    $form->add('model', 'document', [
+                        'class' => 'CatalogBundle\Document\Model',
+                        'query_builder' => function (ModelRepository $repo) {
+                            return $repo->createQueryBuilder();
+                        },
+                    ]);
+
+                }
+            });
+
+//            ->add('model', 'document', [
+//                'class' => 'CatalogBundle\Document\Model',
+//                'query_builder' => function (ModelRepository $repo) {
+//                    return $repo->createQueryBuilder();
+//                },
+//            ]);
+
 
     }
 
