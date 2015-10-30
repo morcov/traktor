@@ -9,8 +9,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AdvertType extends AbstractType
 {
+    protected $makeID;
+
+    public function __construct($makeID)
+    {
+        $this->makeID = $makeID;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $makeID = $this->makeID;
+
         $builder
             ->add('year', 'integer')
             ->add('price', 'integer')
@@ -20,11 +29,12 @@ class AdvertType extends AbstractType
             ])
             ->add('model', 'document', [
                 'class' => 'AdvertBundle\Document\Model',
-                'query_builder' => function (ModelRepository $repo) {
-                    return $repo->createQueryBuilder();
+                'query_builder' => function (ModelRepository $repo) use ($makeID) {
+                    return $repo->createModelsByMakeQuery($makeID);
                 },
             ])
             ->add('description', 'textarea');
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

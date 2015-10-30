@@ -20,13 +20,13 @@ class Advert
     protected $id;
 
     /**
-     * @var string
+     * @Assert\NotNull
      * @MongoDB\ReferenceOne(targetDocument="AdvertBundle\Document\Make")
      */
     protected $make;
 
     /**
-     * @var string
+     * @Assert\NotNull
      * @MongoDB\ReferenceOne(targetDocument="AdvertBundle\Document\Model")
      */
     protected $model;

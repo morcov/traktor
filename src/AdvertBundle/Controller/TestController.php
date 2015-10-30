@@ -13,8 +13,8 @@ class TestController extends BaseController
      */
     public function indexAction()
     {
-        $makes = $this->get('advert.make')->findAll();
-        $models = $this->get('advert.model')->findAll();
+        $makes = $this->get('advert.make_repository')->findAll();
+        $models = $this->get('advert.model_repository')->findAll();
 
 
         return $this->render('AdvertBundle:Test:detail.html.twig', [

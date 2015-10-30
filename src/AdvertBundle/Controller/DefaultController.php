@@ -13,7 +13,7 @@ class DefaultController extends BaseController
      */
     public function indexAction()
     {
-        $adverts = $this->get('advert.advert')->findAll();
+        $adverts = $this->get('advert.advert_repository')->findAll();
 
         return $this->render('@Advert/Default/index.html.twig', [
             'adverts' => $adverts,
@@ -28,7 +28,7 @@ class DefaultController extends BaseController
      */
     public function detailAction(Request $request, $id)
     {
-        $advert = $this->get('advert.advert')->find($id);
+        $advert = $this->get('advert.advert_repository')->find($id);
 
         return $this->render('@Advert/Default/detail.html.twig', [
             'advert' => $advert,

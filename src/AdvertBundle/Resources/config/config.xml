@@ -6,22 +6,28 @@
 
     <services>
 
-        <service id="advert.advert" class="AdvertBundle\Document\AdvertRepository" factory-service="doctrine.odm.mongodb.document_manager"
+        <service id="advert.advert_repository" class="AdvertBundle\Document\AdvertRepository" factory-service="doctrine.odm.mongodb.document_manager"
                  factory-method="getRepository">
             <argument>AdvertBundle\Document\Advert</argument>
         </service>
 
-        <service id="advert.make" class="AdvertBundle\Document\MakeRepository" factory-service="doctrine.odm.mongodb.document_manager"
+        <service id="advert.make_repository" class="AdvertBundle\Document\MakeRepository" factory-service="doctrine.odm.mongodb.document_manager"
                  factory-method="getRepository">
             <argument>AdvertBundle\Document\Make</argument>
         </service>
 
-        <service id="advert.model" class="AdvertBundle\Document\ModelRepository" factory-service="doctrine.odm.mongodb.document_manager"
+        <service id="advert.model_repository" class="AdvertBundle\Document\ModelRepository" factory-service="doctrine.odm.mongodb.document_manager"
                  factory-method="getRepository">
-            <argument>AdvertBundle\Document\Model</argument>
+            <argument>AdvertBundle\Document\Models</argument>
         </service>
 
-
     </services>
+
+    <!--<assetic:config>-->
+        <!--<assetic:asset name="jquery_and_ui">-->
+            <!--<assetic:input>AdvertBundle\Resources\public\javascripts\advert.js</assetic:input>-->
+        <!--</assetic:asset>-->
+    <!--</assetic:config>-->
+
 </container>
 

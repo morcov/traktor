@@ -38,7 +38,7 @@ class AdvertController extends BaseController
      */
     public function editAction(Request $request, $id)
     {
-        $advert = $this->get('advert.advert')->find($id);
+        $advert = $this->get('advert.advert_repository')->find($id);
         $form = $this->make($request, $advert);
 
         if (!($form instanceof Form)) {
@@ -58,7 +58,10 @@ class AdvertController extends BaseController
      */
     private function make($request, $advert = null)
     {
-        $form = $this->getFF()->create(new AdvertType(), $advert ?: new Advert());
+        $makes = $this->get('advert.make_repository')->findAll();
+        $makeID = array_shift($makes)->getId();
+
+        $form = $this->getFF()->create(new AdvertType($makeID), $advert ?: new Advert());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -70,5 +73,20 @@ class AdvertController extends BaseController
         }
 
         return $form;
+    }
+
+    public function getModelsByMakeAction(Request $request)
+    {
+        $makeID = $request->get('make');
+
+        $models = $this->get('advert.model_repository')->getModelsByMake($makeID);
+
+        $select = [];
+
+        foreach($models as $model){
+            $select[$model->getId()] = $model->getName();
+        }
+
+        return new Response($select);
     }
 }
