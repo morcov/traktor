@@ -27,11 +27,24 @@ class AdvertType extends AbstractType
             ])
             ->add('model', 'document', [
                 'class' => 'CatalogBundle\Document\Model',
-                'query_builder' => function (ModelRepository $repo) {
-                    return $repo->createQueryBuilder()->field('id')->equals(false);
-                },
             ])
             ->add('description', 'textarea');
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            $advert = $event->getData();
+            $form = $event->getForm();
+
+            $form->add('model', 'document', [
+                'class' => 'CatalogBundle\Document\Model',
+                'query_builder' => function (ModelRepository $repo) use ($advert) {
+                    if (!$advert->getId()) {
+                        return $repo->createModelsByMakeQuery(false);
+                    }else{
+                        return $repo->createModelsByMakeQuery($advert->getMake()->getId());
+                    }
+                },
+            ]);
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver)
