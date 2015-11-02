@@ -1,0 +1,29 @@
+{% extends '@Common/base.html.twig' %}
+
+{% block body %}
+
+    <form novalidate name="app_bundle_advert" method="post" action="{{ path('search_homepage') }}">
+        {{ form_label(form) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+        <div>
+            <button type="submit" id="app_bundle_advert_save">Save</button>
+        </div>
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody id="adverts"></tbody>
+    </table>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/search/javascripts/search.js') }}"></script>
+{% endblock %}

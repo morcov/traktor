@@ -6,31 +6,19 @@ use Doctrine\ODM\MongoDB\LockException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends BaseController
+class DetailController extends BaseController
 {
-    /**
-     * @return Response
-     */
-    public function indexAction()
-    {
-        $adverts = $this->get('advert.advert_repository')->findAll();
-
-        return $this->render('@Advert/Default/index.html.twig', [
-            'adverts' => $adverts,
-        ]);
-    }
-
     /**
      * @param Request $request
      * @param $id
      * @return Response
      * @throws LockException
      */
-    public function detailAction(Request $request, $id)
+    public function indexAction(Request $request, $id)
     {
         $advert = $this->get('advert.advert_repository')->find($id);
 
-        return $this->render('@Advert/Default/detail.html.twig', [
+        return $this->render('AdvertBundle:Detail:index.html.twig', [
             'advert' => $advert,
         ]);
     }

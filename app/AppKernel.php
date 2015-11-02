@@ -18,7 +18,6 @@ class AppKernel extends Kernel
 
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
 
-            new AppBundle\AppBundle(),
             new AdvertBundle\AdvertBundle(),
             new CatalogBundle\CatalogBundle(),
             new CommonBundle\CommonBundle(),
