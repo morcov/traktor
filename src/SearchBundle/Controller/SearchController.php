@@ -27,7 +27,9 @@ class SearchController extends BaseController
      */
     public function getAdvertsAction(Request $request)
     {
-        $params = $request->request->all();
+        $params = $request->request->get('search_bundle_search');
+        var_dump($params);
+
         $adverts = $this->get('advert.advert_repository')->search($params);
 
         return $this->render('@Search/Search/adverts.html.twig', [

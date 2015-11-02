@@ -8,11 +8,33 @@ class AdvertRepository extends DocumentRepository
 
     public function search($params)
     {
-        $query = $this->createQueryBuilder()
-//            ->field('name')->equals('Traktor')
-            ->getQuery();
+        $query = $this->createQueryBuilder();
 
-        return $query->execute();
+        if (!empty($params['year_from'])) {
+            $query->field('year')->gte((int)$params['year_from']);
+        }
+
+        if (!empty($params['year_to'])) {
+            $query->field('year')->lte((int)$params['year_to']);
+        }
+
+        if (!empty($params['price_from'])) {
+            $query->field('price')->gte((int)$params['price_from']);
+        }
+
+        if (!empty($params['price_to'])) {
+            $query->field('price')->lte((int)$params['price_to']);
+        }
+
+        if (!empty($params['make'])) {
+            $query->field('make.id')->equals($params['make']);
+        }
+
+        if (!empty($params['model'])) {
+            $query->field('model.id')->equals($params['model']);
+        }
+
+        return $query->getQuery()->execute();
     }
 
 }

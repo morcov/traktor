@@ -10,13 +10,15 @@ class SearchType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $years = $this->buildYearChoices();
+
         $builder
             ->add('year_from', 'choice', [
-                'choices' => range(Date('Y') - 70, date('Y')),
+                'choices' => $years,
                 'empty_value' => 'All',
             ])
             ->add('year_to', 'choice', [
-                'choices' => range(Date('Y') - 70, date('Y')),
+                'choices' => $years,
                 'empty_value' => 'All',
             ])
             ->add('price_from', 'integer')
@@ -38,5 +40,12 @@ class SearchType extends AbstractType
     public function getName()
     {
         return 'search_bundle_search';
+    }
+
+    private function buildYearChoices() {
+        $distance = 20;
+        $yearsBefore = date('Y', mktime(0, 0, 0, date("m"), date("d"), date("Y") - $distance));
+        $yearsAfter = date('Y', mktime(0, 0, 0, date("m"), date("d"), date("Y") + $distance));
+        return array_combine(range($yearsBefore, $yearsAfter), range($yearsBefore, $yearsAfter));
     }
 }
