@@ -9,3 +9,7 @@ advert:
 app:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
+
+catalog:
+    resource: "@CatalogBundle/Resources/config/routing.yml"
+    prefix:   /

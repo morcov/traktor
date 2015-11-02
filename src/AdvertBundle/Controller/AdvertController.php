@@ -59,7 +59,7 @@ class AdvertController extends BaseController
     private function make($request, $advert = null)
     {
 
-        $form = $this->getFF()->create(new AdvertType(), $advert ?: new Advert());
+        $form = $this->createForm(new AdvertType(), $advert ?: new Advert());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -71,20 +71,5 @@ class AdvertController extends BaseController
         }
 
         return $form;
-    }
-
-    public function getModelsByMakeAction(Request $request)
-    {
-        $makeID = $request->get('make');
-
-        $models = $this->get('catalog.model_repository')->getModelsByMake($makeID);
-
-        $select = [];
-
-        foreach($models as $model){
-            $select[$model->getId()] = $model->getName();
-        }
-
-        return new Response($select);
     }
 }

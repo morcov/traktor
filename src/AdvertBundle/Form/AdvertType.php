@@ -25,32 +25,13 @@ class AdvertType extends AbstractType
             ->add('make', 'document', [
                 'class' => 'CatalogBundle\Document\Make',
             ])
+            ->add('model', 'document', [
+                'class' => 'CatalogBundle\Document\Model',
+                'query_builder' => function (ModelRepository $repo) {
+                    return $repo->createQueryBuilder()->field('id')->equals(false);
+                },
+            ])
             ->add('description', 'textarea');
-
-        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
-                $adver = $event->getData();
-                $form = $event->getForm();
-
-                if ($adver && $adver->getMake()) {
-
-                    $form->add('model', 'document', [
-                        'class' => 'CatalogBundle\Document\Model',
-                        'query_builder' => function (ModelRepository $repo) {
-                            return $repo->createQueryBuilder();
-                        },
-                    ]);
-
-                }
-            });
-
-//            ->add('model', 'document', [
-//                'class' => 'CatalogBundle\Document\Model',
-//                'query_builder' => function (ModelRepository $repo) {
-//                    return $repo->createQueryBuilder();
-//                },
-//            ]);
-
-
     }
 
     public function configureOptions(OptionsResolver $resolver)

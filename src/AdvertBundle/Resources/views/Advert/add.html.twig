@@ -12,11 +12,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    {#<script>#}
-        {#$(document).ready(function(){#}
-            {#$.post( "/advert/make/models", function( data ) {#}
-                {#console.log(data)#}
-            {#}, 'json');#}
-        {#});#}
-    {#</script>#}
+    <script src="{{ asset('bundles/advert/javascripts/advert.js') }}"></script>
 {% endblock %}

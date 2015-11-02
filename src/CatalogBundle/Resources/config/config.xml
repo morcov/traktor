@@ -13,7 +13,7 @@
 
         <service id="catalog.model_repository" class="CatalogBundle\Document\ModelRepository" factory-service="doctrine.odm.mongodb.document_manager"
                  factory-method="getRepository">
-            <argument>CatalogBundle\Document\Models</argument>
+            <argument>CatalogBundle\Document\Model</argument>
         </service>
 
     </services>
