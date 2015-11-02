@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new AdvertBundle\AdvertBundle(),
             new CatalogBundle\CatalogBundle(),
             new CommonBundle\CommonBundle(),
+            new SearchBundle\SearchBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
