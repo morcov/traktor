@@ -1,6 +1,6 @@
 <?php
 
-namespace CatalogBundle\Document;
+namespace AdvertBundle\Document;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
@@ -8,7 +8,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 /**
  * @MongoDB\Document(
  * collection="make",
- * repositoryClass="CatalogBundle\Document\MakeRepository"
+ * repositoryClass="AdvertBundle\Document\MakeRepository"
  * )
  */
 class Make

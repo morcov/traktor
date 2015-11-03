@@ -1,12 +1,16 @@
 
 advert_add_page:
     path:   /advert/add
-    defaults: { _controller: AdvertBundle:Advert:add }
+    defaults: { _controller: AdvertBundle:Advert:index }
+
+advert_edit_page:
+    path:     /advert/{id}/edit
+    defaults: { _controller: AdvertBundle:Advert:index }
 
 advert_detail_page:
     path:     /advert/{id}
     defaults: { _controller: AdvertBundle:Detail:index }
 
-advert_edit_page:
-    path:     /advert/{id}/edit
-    defaults: { _controller: AdvertBundle:Advert:edit }
+get_model_by_make:
+  path: /make/models
+  defaults: { _controller: AdvertBundle:Advert:getModelsByMake }

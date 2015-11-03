@@ -21,13 +21,13 @@ class Advert
 
     /**
      * @Assert\NotNull
-     * @MongoDB\ReferenceOne(targetDocument="CatalogBundle\Document\Make")
+     * @MongoDB\ReferenceOne(targetDocument="AdvertBundle\Document\Make")
      */
     protected $make;
 
     /**
      * @Assert\NotNull
-     * @MongoDB\ReferenceOne(targetDocument="CatalogBundle\Document\Model")
+     * @MongoDB\ReferenceOne(targetDocument="AdvertBundle\Document\Model")
      */
     protected $model;
 

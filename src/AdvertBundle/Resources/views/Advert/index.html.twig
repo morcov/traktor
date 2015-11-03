@@ -2,7 +2,11 @@
 
 {% block body %}
 
-    <form novalidate name="app_bundle_advert" method="post" action="{{ path('advert_add_page') }}">
+    {% if advert is not empty %}
+        <input type="hidden" id="edit" value="1">
+    {% endif %}
+
+    <form novalidate name="app_bundle_advert" method="post">
         {{ form_label(form) }}
         {{ form_errors(form) }}
         {{ form_widget(form) }}
@@ -12,5 +16,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('bundles/advert/javascripts/addAdvert.js') }}"></script>
+    <script src="{{ asset('bundles/advert/javascripts/advert.js') }}"></script>
 {% endblock %}

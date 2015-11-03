@@ -2,7 +2,7 @@
 
 namespace AdvertBundle\Form;
 
-use CatalogBundle\Document\ModelRepository;
+use AdvertBundle\Document\ModelRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,28 +23,12 @@ class AdvertType extends AbstractType
             ->add('price', 'integer')
             ->add('is_new', 'checkbox')
             ->add('make', 'document', [
-                'class' => 'CatalogBundle\Document\Make',
+                'class' => 'AdvertBundle\Document\Make',
             ])
             ->add('model', 'document', [
-                'class' => 'CatalogBundle\Document\Model',
+                'class' => 'AdvertBundle\Document\Model',
             ])
             ->add('description', 'textarea');
-
-        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
-            $advert = $event->getData();
-            $form = $event->getForm();
-
-            $form->add('model', 'document', [
-                'class' => 'CatalogBundle\Document\Model',
-                'query_builder' => function (ModelRepository $repo) use ($advert) {
-                    if (!$advert->getId()) {
-                        return $repo->createModelsByMakeQuery(false);
-                    }else{
-                        return $repo->createModelsByMakeQuery($advert->getMake()->getId());
-                    }
-                },
-            ]);
-        });
     }
 
     public function configureOptions(OptionsResolver $resolver)

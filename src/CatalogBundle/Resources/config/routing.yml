@@ -1,3 +1,0 @@
-get_model_by_make:
-  path: /make/models
-  defaults: { _controller: CatalogBundle:Default:getModelsByMake }

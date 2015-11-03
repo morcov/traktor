@@ -2,7 +2,7 @@
 
 namespace SearchBundle\Form;
 
-use CatalogBundle\Document\ModelRepository;
+use AdvertBundle\Document\ModelRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 

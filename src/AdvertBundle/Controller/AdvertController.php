@@ -16,49 +16,12 @@ class AdvertController extends BaseController
 
     /**
      * @param Request $request
+     * @param null $id
      * @return RedirectResponse|Response
      */
-    public function addAction(Request $request)
-    {
-        $form = $this->make($request);
-
-        if (!($form instanceof Form)) {
-            return $this->redirect($form);
-        }
-
-        return $this->render('@Advert/Advert/add.html.twig', [
-            'form' => $form->createView(),
-        ]);
-
-    }
-
-    /**
-     * @param Request $request
-     * @return RedirectResponse|Response
-     */
-    public function editAction(Request $request, $id)
+    public function indexAction(Request $request, $id = null)
     {
         $advert = $this->get('advert.advert_repository')->find($id);
-        $form = $this->make($request, $advert);
-
-        if (!($form instanceof Form)) {
-            return $this->redirect($form);
-        }
-
-        return $this->render('@Advert/Advert/edit.html.twig', [
-            'form' => $form->createView(),
-            'advert' => $advert,
-        ]);
-    }
-
-    /**
-     * @param $request
-     * @param null $advert
-     * @return string|Form
-     */
-    private function make($request, $advert = null)
-    {
-
         $form = $this->createForm(new AdvertType(), $advert ?: new Advert());
         $form->handleRequest($request);
 
@@ -67,9 +30,29 @@ class AdvertController extends BaseController
             $this->getDm()->persist($advert);
             $this->getDm()->flush();
 
-            return $this->get('router')->generate('advert_detail_page', ['id' => $advert->getId()]);
+            $url = $this->get('router')->generate('advert_detail_page', ['id' => $advert->getId()]);
+            return $this->redirect($url);
         }
 
-        return $form;
+        return $this->render('@Advert/Advert/index.html.twig', [
+            'form' => $form->createView(),
+            'advert' => $advert,
+        ]);
+
     }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function getModelsByMakeAction(Request $request)
+    {
+        $makeID = $request->request->get('make');
+        $modelID = $request->request->get('model');
+
+        $models = $this->get('advert.model_repository')->getModelsByMake($makeID);
+
+        return $this->render('@Advert/select.html.twig', ['array' => $models, 'model' => $modelID]);
+    }
+
 }
