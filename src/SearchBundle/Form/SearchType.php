@@ -24,11 +24,11 @@ class SearchType extends AbstractType
             ->add('price_from', 'integer')
             ->add('price_to', 'integer')
             ->add('make', 'document', [
-                'class' => 'CatalogBundle\Document\Make',
+                'class' => 'AdvertBundle\Document\Make',
                 'empty_value' => 'All',
             ])
             ->add('model', 'document', [
-                'class' => 'CatalogBundle\Document\Model',
+                'class' => 'AdvertBundle\Document\Model',
                 'empty_value' => 'All',
                 'query_builder' => function (ModelRepository $repo) {
                     // Hack for get empty Builder

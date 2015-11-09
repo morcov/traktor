@@ -6,6 +6,14 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
 class AdvertRepository extends DocumentRepository
 {
 
+    public function findBySlug($slug)
+    {
+        $query = $this->createQueryBuilder()
+            ->field('slug')->equals($slug);
+
+        return $query->getQuery()->getSingleResult();
+    }
+
     public function search($params)
     {
         $query = $this->createQueryBuilder();
@@ -27,11 +35,11 @@ class AdvertRepository extends DocumentRepository
         }
 
         if (!empty($params['make'])) {
-            $query->field('make.id')->equals($params['make']);
+            $query->field('make.id')->equals($params['make']->getId());
         }
 
         if (!empty($params['model'])) {
-            $query->field('model.id')->equals($params['model']);
+            $query->field('model.id')->equals($params['model']->getId());
         }
 
         return $query->getQuery()->execute();

@@ -4,6 +4,7 @@ namespace AdvertBundle\Document;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @MongoDB\Document(
@@ -47,6 +48,13 @@ class Advert
 
     /**
      * @var string
+     * @Gedmo\Slug(fields={"description"})
+     * @MongoDB\String
+     */
+    protected $slug;
+
+    /**
+     * @var string
      * @Assert\NotNull
      * @MongoDB\String
      */
@@ -78,10 +86,13 @@ class Advert
 
     /**
      * @param string $make
+     * @return $this
      */
     public function setMake($make)
     {
         $this->make = $make;
+
+        return $this;
     }
 
     /**
@@ -94,10 +105,13 @@ class Advert
 
     /**
      * @param string $model
+     * @return $this
      */
     public function setModel($model)
     {
         $this->model = $model;
+
+        return $this;
     }
 
     /**
@@ -110,10 +124,13 @@ class Advert
 
     /**
      * @param int $year
+     * @return $this
      */
     public function setYear($year)
     {
         $this->year = $year;
+
+        return $this;
     }
 
     /**
@@ -126,10 +143,13 @@ class Advert
 
     /**
      * @param boolean $is_new
+     * @return $this
      */
     public function setIsNew($is_new)
     {
         $this->is_new = $is_new;
+
+        return $this;
     }
 
     /**
@@ -142,10 +162,13 @@ class Advert
 
     /**
      * @param string $description
+     * @return $this
      */
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
@@ -158,10 +181,32 @@ class Advert
 
     /**
      * @param int $price
+     * @return $this
      */
     public function setPrice($price)
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     * @return $this
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 
 

@@ -10,13 +10,13 @@ class DetailController extends BaseController
 {
     /**
      * @param Request $request
-     * @param $id
+     * @param $slug
      * @return Response
-     * @throws LockException
+     * @internal param $id
      */
-    public function indexAction(Request $request, $id)
+    public function indexAction(Request $request, $slug)
     {
-        $advert = $this->get('advert.advert_repository')->find($id);
+        $advert = $this->get('advert.advert_repository')->findBySlug($slug);
 
         return $this->render('AdvertBundle:Detail:index.html.twig', [
             'advert' => $advert,

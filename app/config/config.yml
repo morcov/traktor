@@ -60,6 +60,15 @@ doctrine_mongodb:
         default:
             auto_mapping: true
 
+stof_doctrine_extensions:
+    class:
+        sluggable: Gedmo\Sluggable\SluggableListener
+    default_locale: en_US:
+    mongodb:
+        default:
+            sluggable: true
+            timestampable: true
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"

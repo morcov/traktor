@@ -30,7 +30,7 @@ class AdvertController extends BaseController
             $this->getDm()->persist($advert);
             $this->getDm()->flush();
 
-            $url = $this->get('router')->generate('advert_detail_page', ['id' => $advert->getId()]);
+            $url = $this->get('router')->generate('advert_detail_page', ['slug' => $advert->getSlug()]);
             return $this->redirect($url);
         }
 

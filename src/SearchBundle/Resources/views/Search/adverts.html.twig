@@ -1,6 +1,6 @@
 {% for advert in adverts %}
     <tr>
-        <td><a href="{{ path('advert_detail_page', {'id': advert.id }) }}">{{ advert.make }} {{ advert.model }}</a></td>
+        <td><a href="{{ path('advert_detail_page', {'slug': advert.slug }) }}">{{ advert.make }} {{ advert.model }}</a></td>
         <td>{{ advert.year }}</td>
         <td>{{ advert.price }}$</td>
     </tr>
