@@ -1,5 +1,7 @@
 {% extends '@Common/base.html.twig' %}
 
+{% block title %}Add{% endblock %}
+
 {% block body %}
 
     {% if advert is not empty %}
@@ -10,7 +12,7 @@
         {{ form_label(form) }}
         {{ form_errors(form) }}
         {{ form_widget(form) }}
-        <div><button type="submit" id="app_bundle_advert_save">Save</button></div>
+        <div><input type="submit" id="app_bundle_advert_save" value="Save"></div>
     </form>
 
 {% endblock %}
